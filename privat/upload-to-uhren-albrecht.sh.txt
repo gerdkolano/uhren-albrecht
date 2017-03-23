@@ -1,0 +1,189 @@
+#!/bin/bash
+
+# /home/hanno/joomla-artikel/upload-to-uhren-albrecht.sh | tee /tmp/upload.log
+# Der Internetauftritt von Uhren-Albrecht ist mehrfach vorhanden:
+# PHP:  http://uhren-albrecht.hopto.org/  als Quelle
+# HTML: /daten/srv/www/albrecht.hopto.org/  als daraus generierte neueste HTML-Fassung
+# HTML: http://albrecht.hopto.org/           als Produktionsfassung daheim
+# HTML: http://www.uhren-albrecht.de/     als Produktionsfassung bei Strato
+# Die Quelle wird editiert,
+# daraus die Produktionsfassung daheim generiert und
+# die veränderten Dateien an die Produktionsfassung bei Strato gesandt.
+# 1 Editiere die Quelle
+# 2 Erzeuge HTML in /daten/srv/www/albrecht.hopto.org/
+# 3 Vergleiche mit der vorigen Fassung in http://albrecht.hopto.org
+# 4 Sende veränderte Dateien an Strato
+# 5 Bewahre die vorige Fassung auf
+# 6 Kopiere veränderte Daten nach /daten/srv/www/albrecht.hopto.org
+# 
+# curlftpfs -o user=usr_ftp_140505_0:$(koerperteil) gerdkolano.cwsurf.de /cwsurf
+# mkdir /tmp/rsync
+# rsync -auv --temp-dir=/tmp/rsync --exclude '*~' /daten/srv/www/uhren-albrecht.hopto.org/ /cwsurf/uhren-albrecht.hopto.org/
+# curlftpfs  hängt, wenn während seiner Aktivität die lokale IP-Adresse geändert wird
+# rsync hängt, wenn während seiner Aktivität die lokale IP-Adresse geändert wird
+# 
+# Entferne lösche unerwünschte Dateien
+# rm -v /daten/srv/www/albrecht.hopto.org/v-tmp/privat/diplomarbeit-a-kreil.?
+# rm -v /daten/srv/www/albrecht.hopto.org/v-aktuell/privat/diplomarbeit-a-kreil.?
+# rm -v /daten/srv/www/albrecht.hopto.org/v-tmp/privat/angebote.?
+# rm -v /daten/srv/www/albrecht.hopto.org/v-aktuell/privat/angebote.?
+# rm -v /daten/srv/www/albrecht.hopto.org/v-tmp/privat/angebote/Kirchturmuhr\ 02*
+# rm -v /daten/srv/www/albrecht.hopto.org/v-aktuell/privat/angebote/Kirchturmuhr\ 02*
+# rm -v /daten/srv/www/albrecht.hopto.org/namen-normal/privat/angebote/Kirchturmuhr\ 02*
+# rm -v /tmp/upload-*
+# rm -v /daten/srv/www/albrecht.hopto.org/v-tmp/privat/index.php  /daten/srv/www/albrecht.hopto.org/v-aktuell/privat/index.php  /daten/srv/www/albrecht.hopto.org/uhren-albrecht.hopto.org/privat/index.php 
+
+# Nicht mit "a href" verlinkte Dateien vor dem Start dieses Skripts kopieren
+# Besser: doch verlinken, z.B. über das Verzeichnis "privat"
+# cp -av /daten/srv/www/uhren-albrecht.hopto.org/Polnisch/* /daten/srv/www/albrecht.hopto.org/v-aktuell/Polnisch/
+# cp -av /daten/srv/www/uhren-albrecht.hopto.org/uhr /daten/srv/www/albrecht.hopto.org/v-aktuell
+
+# Geh in ein Verzeichnis, das im Browser unter http://albrecht.hopto.org/ sichtbar ist
+mkdir -pv /daten/srv/www/albrecht.hopto.org
+cd        /daten/srv/www/albrecht.hopto.org
+
+# Hole die mittels PHP dynamisch generierten Seiten dorthin und kopiere sie nach namen-normal.
+# Sie bleiben im Verzeichnis uhren-albrecht.hopto.org, so dass
+# Sie bleiben im Verzeichnis hannoschallehn.xeo, so dass
+# wget wegen --timestamping beim naechsten mal nur die inzwischen veränderten Dateien holt.
+# wget erkennt die dynamischen PHP-Dateien und holt sie auf jeden Fall.
+# Die Endung .php von Dateinamen wird in .html umgewandelt.
+# wget --adjust-extension --restrict-file-names=nocontrol --recursive --convert-links --level=inf --timestamping http://www.lesnachata.eu
+# wget --restrict-file-names=nocontrol --recursive --convert-links --level=inf --timestamping http://uhren-albrecht.hopto.org/privat/
+QUELLURL=hannoschallehn.xeo
+QUELLURL=uhren-albrecht.hopto.org
+echo -n wget http://$QUELLURL/privat/ " "
+#get -q --restrict-file-names=nocontrol --recursive --level=inf --timestamping http://$QUELLURL/privat/
+torsocks wget -q --restrict-file-names=nocontrol --recursive --level=inf --timestamping http://$QUELLURL/privat/
+echo wget $QUELLURL/privat/ fertig.
+
+echo -n "13 "
+rm -rf /daten/srv/www/albrecht.hopto.org/namen-normal; 
+echo -n "12 "
+cp -a /daten/srv/www/albrecht.hopto.org/$QUELLURL /daten/srv/www/albrecht.hopto.org/namen-normal
+echo -n "11 "
+
+# Normalisiere die Dateinamen in namen-normal. Beispiel:
+# „namen-normal/turmuhren.php?lang=de&file=turmuhren.html“ -> „namen-normal/turmuhren.de.html“
+ls -d /daten/srv/www/albrecht.hopto.org/namen-normal/* | perl -ne 'chop;$a=$_;s/([^.]*)\.php\?lang=([^&]*)&file=[^.]*/$1.$2.html/; system "mv \"$a\" \"$_\"\n" unless $a eq $_'
+
+# Normalisiere die Verweise in den Dateien und schreibe die normalisierten Inhalte nach links-normal
+echo -n "10 "
+rm -rf /daten/srv/www/albrecht.hopto.org/links-normal; mkdir /daten/srv/www/albrecht.hopto.org/links-normal;
+for i in /daten/srv/www/albrecht.hopto.org/namen-normal/*.html; do perl -pne 's/([^.]*)\.php\?lang=([^&]*)&(amp;)?file=[^"]*/$1.$2.html/' $i > ${i/namen-normal/links-normal}; done
+echo -n "9 "
+
+# Füge die Nicht-HTML-Dateien hinzu. Dazu
+# kopiere alle geholten Dateien nach v-tmp und ersetze die HTML-Dateien durch die soeben normalisierten
+# Erhalte v-tmp. Nicht rm -rf v-tmp;
+# cp -auv namen-normal v-tmp; cp -auv links-normal/* v-tmp
+mkdir -p /daten/srv/www/albrecht.hopto.org/v-tmp
+for i in  /daten/srv/www/albrecht.hopto.org/namen-normal/* ; do cp -au $i /daten/srv/www/albrecht.hopto.org/v-tmp; done
+echo -n "8 "
+for i in  /daten/srv/www/albrecht.hopto.org/links-normal/* ; do cp -au $i /daten/srv/www/albrecht.hopto.org/v-tmp; done
+echo -n "7 "
+
+echo Neue Fassung bei albrecht.hopto.org fertig.
+
+# Sende nur die soeben veränderten Dateien an den Provider
+# Auf albrecht.hopto.org liegt die vorige Fassung
+# vergleiche die soeben hergestellte Fassung mit der vorigen und
+# sende nur die soeben veränderten Dateien an den Provider
+echo -n "6 "
+find  /daten/srv/www/albrecht.hopto.org/v-tmp/ -type f | while read n ; do a=${n/v-tmp/v-aktuell} ; cmp --silent "$a" "$n" || echo "$a" "$n"; done > /tmp/upload-lokal-viel
+
+echo -n "5 "
+while read a b; do perl -e '$d1=shift;open IN1, " < $d1" or die "$! $d1\n"; $d2=shift;open IN2, "< $d2" or die "$! $d2\n"; undef $/;while ($a=<IN1>){$n=<IN2>; $a=~s/<!-- created [^>]* -->//; $n=~s/<!-- created [^>]* -->//;  exit 1 if $a ne $n;}'  $a $b ||  echo $a $b; done < /tmp/upload-lokal-viel > /tmp/upload-lokal-wenig
+
+echo -n "4 "
+perl -pne 's#/daten/srv/www/albrecht.hopto.org([^ ]*)/([^ ]*)#$1#' /tmp/upload-lokal-wenig > /tmp/upload-ncftp-wenig
+
+echo -n "3 "
+while read nach von ; do /usr/bin/ncftpput -V -d /tmp/ncftpput-log -u 5633601.swh.strato-hosting.eu -p `/usr/local/bin/koerperteil strato` 5633601.swh.strato-hosting.eu "$nach" "$von" && echo "$nach" "$von" > /tmp/upload-lokal-weil-ncftpput-erfolgreich-war; done < /tmp/upload-ncftp-wenig
+
+echo -n "2 "
+while read nach von ; do /usr/bin/ncftpput -V -d /tmp/ncftpput-log -u usr_ftp_140505_0 -p $(/usr/local/bin/koerperteil cwsurf) gerdkolano.cwsurf.de "$nach" "$von"; done < /tmp/upload-ncftp-wenig
+
+echo Neue Fassung bei www.uhren-albrecht.de und bei gerdkolano.cwsurf.de/v-aktuell fertig.
+
+# Aktualisiere albrecht.hopto.org
+echo -n "1 "
+while read nach von ; do mkdir -p `dirname $nach`; cp -au $von $nach; done < /tmp/upload-lokal-wenig
+
+# Das Endergebnis kann unter
+# http://albrecht.hopto.org/
+# besichtigt werden
+
+echo Neue Fassung bei uhren-albrecht.hopto.org fertig. \"http://albrecht.hopto.org/\" \"http://www.uhren-albrecht.de/privat/\"
+
+exit 0
+
+# Sende eine einzelne Datei an Strato oder uti.pl oder cwcity
+/usr/bin/ncftpput -V -u 5633601.swh.strato-hosting.eu -p `/usr/local/bin/koerperteil strato` 5633601.swh.strato-hosting.eu  / /daten/srv/www/uhren.hopto.org/google06fc13d9d82b2b02.html 
+/usr/bin/ncftpput -V -u krytka -p rybojady ftp.lesnachata.eu /httpdocs /daten/srv/www/uhren.hopto.org/google06fc13d9d82b2b02.html
+/usr/bin/ncftpput -V -u usr_ftp_140505_0 -p 
+/usr/bin/ncftpput -V -R -d /tmp/ncftpput-log -u usr_ftp_140505_0 -p $(/usr/local/bin/koerperteil cwsurf) gerdkolano.cwsurf.de / /daten/srv/www/cwcity.de/index.html
+
+# Sende das ganze Verzeichnis v-aktuell an Strato
+echo /usr/bin/ncftpput -V -R -d /tmp/ncftpput-log -u 5633601.swh.strato-hosting.eu -p `/usr/local/bin/koerperteil strato` 5633601.swh.strato-hosting.eu  / /daten/srv/www/albrecht.hopto.org/v-aktuell
+
+# Sende das ganze Verzeichnis v-aktuell an cwcity
+echo /usr/bin/ncftpput -V -R -d /tmp/ncftpput-log -u usr_ftp_140505_0 -p $(/usr/local/bin/koerperteil cwsurf) gerdkolano.cwsurf.de / /daten/srv/www/albrecht.hopto.org/v-aktuell
+
+# Sende das ullstein-protokoll an Strato mit Bildverweisen auf cwcity
+perl -pne 's#<img src="images#<img src="http://gerdkolano.cwsurf.de/images#' privat/ullstein-protokoll.html | /usr/bin/ncftpput -V -e stdout -d stdout -u 5633601.swh.strato-hosting.eu -p $(/usr/local/bin/koerperteil strato) -c 5633601.swh.strato-hosting.eu  /v-aktuell/privat/ullstein-protokoll.html
+
+# Sende ein einzelnes Bild an cwcity
+/usr/bin/ncftpput -V -d stdout -c -u usr_ftp_140505_0 -p $(/usr/local/bin/koerperteil cwsurf) gerdkolano.cwsurf.de /images/stories/hanno/ullstein-uhr/Zdjecie1873.jpg < /daten/srv/www/htdocs/joo251/images/stories/hanno/ullstein-uhr/Zdjęcie1873.jpg
+
+# Mit Filezilla erstelle Verzeichnis
+# v-aktuell/privat/images/stories/hanno/ullstein-uhr
+# Erzwinge erneuten Hochladeversuch
+rm -r /daten/srv/www/albrecht.hopto.org/v-aktuell/privat/images/
+
+#/usr/bin/ncftpput -V -u usr_ftp_140505_0 -p `/usr/local/bin/koerperteil cwsurf` gerdkolano.cwsurf.de  / /daten/srv/www/uhren-albrecht.hopto.org/
+# apt-get install curlftpfs -y
+
+curlftpfs -o user=krytka:rybojady ftp.lesnachata.eu /lesnachata
+curlftpfs -o user=a8176204:$(/usr/local/bin/koerperteil 000webhost) uhren.net46.net /000webhost
+
+curlftpfs -o user=5633601.swh.strato-hosting.eu:$(/usr/local/bin/koerperteil strato) 5633601.swh.strato-hosting.eu /media/strato/
+rsync  -auv --exclude '*~' --delete --delete-excluded /daten/srv/www/uhren-albrecht.hopto.org/ /strato/uhren-albrecht.hopto.org/
+
+curlftpfs -o user=usr_ftp_140505_0:$(/usr/local/bin/koerperteil cwsurf) gerdkolano.cwsurf.de /media/cwsurf/
+rsync -auv --no-o --no-g --copy-links --temp-dir=/tmp --exclude='*~' --delete --delete-excluded /daten/srv/www/uhren-albrecht.hopto.org/ /media/cwsurf/uhren-albrecht.hopto.org/
+rsync  -auv --exclude '*~' --delete --delete-excluded /daten/srv/www/uhren-albrecht.hopto.org/ /cwsurf/uhren-albrecht.hopto.org/
+
+# Neue Verzeichnisse werden nicht automatisch angelegt
+# /usr/bin/ncftpput -V -R  -u 5633601.swh.strato-hosting.eu -p `/usr/local/bin/koerperteil strato` 5633601.swh.strato-hosting.eu  /v-aktuell/privat /daten/srv/www/uhren-albrecht.hopto.org/privat/diplomarbeit-a-kreil
+
+# Besichtige Strato
+/usr/bin/ncftp -u 5633601.swh.strato-hosting.eu -p `/usr/local/bin/koerperteil strato` 5633601.swh.strato-hosting.eu
+
+# Besichtige cwsurf
+/usr/bin/ncftp -u usr_ftp_140505_0 -p `/usr/local/bin/koerperteil cwsurf` gerdkolano.cwsurf.de
+
+# Besichtige hostei
+/usr/bin/ncftp -u a3253556 -p `/usr/local/bin/koerperteil hostei` uhren.hostei.com
+/usr/bin/ncftp hostei # credentials in .ncftp/bookmarks
+curlftpfs -o user=a3253556:`/usr/local/bin/koerperteil hostei` uhren.hostei.com /media/hostei
+curlftpfs uhren.hostei.com /media/hostei # credentials in .netrc
+rsync -auv --no-o --no-g --copy-links --temp-dir=/tmp --exclude='*~' --delete --delete-excluded /daten/srv/www/uhren-albrecht.hopto.org/ /media/hostei/public_html/
+umount /media/hostei
+
+# Besichtige net46
+/usr/bin/ncftp -u a8176204 -p `/usr/local/bin/koerperteil net46` uhren.net46.net
+curlftpfs -o user=a8176204:`/usr/local/bin/koerperteil net46` uhren.net46.net /media/net46
+curlftpfs  uhren.net46.net /media/net46 # credentials in .netrc
+rsync -auv --no-o --no-g --copy-links --temp-dir=/tmp --exclude='*~' --delete --delete-excluded /daten/srv/www/uhren-albrecht.hopto.org/ /media/net46/public_html/
+umount /media/net46
+# You will be disconnected after 3 minutes of inactivity.
+
+# Sende das ganze Verzeichnis privat/angebote an Strato
+echo /usr/bin/ncftpput -V -R -d /tmp/ncftpput-log -u 5633601.swh.strato-hosting.eu -p `/usr/local/bin/koerperteil strato` 5633601.swh.strato-hosting.eu  /v-aktuell/privat /daten/srv/www/albrecht.hopto.org/v-aktuell/privat/angebote
+
+# Sichere auf fadi von zoe nach fadi
+rsync -n -auv --exclude '*~' /zoe/daten/srv/www/uhren-albrecht.hopto.org/ /daten/srv/www/uhren-albrecht.hopto.org/
+
+# Sichere auf zoe von zoe nach fadi
+rsync -n -auv --exclude '*~' /daten/srv/www/uhren-albrecht.hopto.org/ /fadi/daten/srv/www/uhren-albrecht.hopto.org/

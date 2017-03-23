@@ -1,0 +1,14 @@
+Sehr geehrter Herr Härtel,
+unsere Ullstein-Uhr geht zuverlässig täglich einige Minuten vor.
+Inzwischen habe ich in sie längst einen Reed-Kontakt eingebaut.
+Während das Uhrwerk um eine halbe Minute vorrückt, 
+wird dieser Kontakt kurz, für weniger als eine Sekunde, geschlossen.
+Das Werk schließt ihn ungefähr zwei Sekunden nach dem alle 30 Sekunden
+eintreffenden Polwendeimpuls.  
+
+Mehrmals täglich rückt das Uhrwerk nach einem Polwendeimpuls unerwünscht um mehrere halbe Minuten vor.
+Ich bitte Sie also, eine Steuerung zu liefern,
+die die Anzahl der ausgesandten Polwendeimpuse 
+mit der Anzahl der Schließungen des Reed-Kontakts vergleicht.
+Die Differenz dieser beiden Anzahlen gibt an, wie oft Polwendeimpulse auszulassen sind.
+

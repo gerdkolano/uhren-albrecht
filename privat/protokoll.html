@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link href="../uhrenalbrecht.css" rel="stylesheet" type="text/css" />
+    <title>Protokoll der &Auml;nderungen durch H S</title>
+  </head>
+
+  <body>
+    <h1>Protokoll der &Auml;nderungen durch H S</h1>
+
+    <ul>
+      <li><span class="datum">2013-01-01 v-00</span>
+	<ol>
+	  <li> Vorgefundener Zustand.
+	</ol>
+      <li><span class="datum">2013-01-03 v-01</span>
+	<ol>
+	  <li> FTP-Zugang er&ouml;ffnet.
+	  <li> Zwei Bilder ohne Copyright durch eigene Bilder ersetzt.
+	  <li> Verzeichnisse v-00, v-01, ... f&uuml;r verschiedene Versionen beim Provider Strato eingerichtet.
+	  <li> Umleitungen beim Provider Strato eingerichtet, so dass unter den drei gebuchten URLs weltweit verschiedene Versionen angezeigt werden k&ouml;nnen. 
+	  <li> v-01 : http://www.uhrendienste-albrecht.de/
+	  <li> v-01 : http://www.uhren-albrecht.de/
+	  <li> v-aktuell : http://www.uhrenalbrecht.de/
+	  <li> Gie&szlig;ener Zeitungartikel eingef&uuml;gt
+	</ol>
+      <li><span class="datum">2013-01-04 v-02</span>
+	<ol>
+	  <li> F&uuml;nf Verzeichnisse eingerichtet und alle Dateien auf sie verteilt: gestaltung, bilder, deutsch, english, polski. F&uuml;r Nutzer sichtbare Verzeichnisnamen entstammen ihren Sprachen. Die Dateien index.htm und deutsch/index.htm sind Kopien voneinander.
+	  <li> Orthographie-, Tipp- und Formatierungsfehler korrigiert.
+	  <li> Veraltete Zeitungsartikel verlinkt.
+	  <li> Protokoll eingerichtet.
+	  <li> Flaggen g&auml;ndert.
+	</ol>
+      <li><span class="datum">2013-01-05 v-03</span>
+	<ol>
+	  <li> Suffix htm --> html
+	  <li> CSS hinzugef&uuml;gt
+	</ol>
+      <li><span class="datum">2013-01-06 v-04</span>
+	<ol>
+	  <li> absolute durch relative Referenzen ersetzt.
+               Dadurch unterscheiden sich index.html und deutsch/index.html,
+               aber die mit <pre>
+          wget -q --recursive --convert-links --level=inf --timestamping \
+          http://www.uhrenalbrecht.de/ \
+          http://www.uhrenalbrecht.de/protokoll.html
+               </pre>heruntergeladenen Dateien lassen sich ohne &Auml;nderung wieder hochladen. 
+	  <li> <pre>
+          wget -q --recursive --convert-links --level=inf --timestamping \
+          --adjust-extension http://schallehn.dyndns.za.net/php/pl.php
+               </pre>
+	</ol>
+      <li><span class="datum">2013-01-07 v-05</span>
+	<ol>
+	  <li> Artikel in den verschiedenen Sprachen vereinheitlicht
+	  <li> Aus PHP-Dateien generiert
+	</ol>
+      <li><span class="datum">2013-01-08 v-05</span>
+	<ol>
+	  <li> Shell-Skript zum Hochladen : /daten/srv/www/6htdocs/normalisiere-namen.sh 
+	  <li> Meta-Tags : Englisch hinzugef&uuml;gt
+	  <li> Deutsche Umlaute in HTML-Entities gewandelt
+	  <li> Presse-Echo vervollst&auml;ndigt 
+	  <li> Artikel aus einer tempelhofer SPD-Zeitung
+	</ol>
+      <li><span class="datum">2013-01-09 v-aktuell </span>
+	<ol>
+	  <li> Shell-Skript zum Generieren aus php : php2html.sh
+	  <li> Shell-Skript zum Hochladen :          upload-to-uhren-albrecht.sh
+	  <li> Link-Farben besser unterscheidbar gemacht
+	  <li> Link-Farben mit css definiert
+	</ol>
+      <li><span class="datum">2013-01-10 v-aktuell</span>
+	<ol>
+	  <li> http://uhren.hopto.org http://uhren-albrecht.hopto.org  http://albrecht.hopto.org 
+	</ol>
+      <li><span class="datum">2013-01-11 v-aktuell</span>
+	<ol>
+	  <li> Presse-Echo : Form und Inhalt mit PHP-Function "artikel" getrennt. 
+	</ol>
+      <li><span class="datum">2013-01-12 v-aktuell</span>
+	<ol>
+	  <li> Presse-Echo : Verweise auf OpenStreetMap
+	  <li> Presse-Echo : Verweise auf Fotos bei wikipedia mit &copy;-Vermerk
+	  <li> Nach Generierung der statischen Seiten mit /home/hanno/joomla-artikel/upload-to-uhren-albrecht.sh nur noch die veränderten Seiten an Strato &uuml;bertragen
+	</ol>
+      <li><span class="datum">2013-01-13 v-aktuell</span>
+	<ol>
+	  <li> Redirection geht anscheinend nur mit Javascript, nicht mit Metatag.
+	  <li> index : Form und Inhalt mit PHP-Function "foto" getrennt. 
+	</ol>
+      <li><span class="datum">2013-01-14 v-aktuell</span>
+	<ol>
+	  <li> turmuhren.php auf css umgestellt.
+	</ol>
+      <li><span class="datum">2013-01-15 v-aktuell</span>
+	<ol>
+	  <li> zeitanzeige.php ein wenig &uuml;bersetzt.
+	</ol>
+      <li><span class="datum">2013-01-16 v-aktuell</span>
+	<ol>
+	  <li> php gestattet mit einer function die Wahl zwischen
+	       Bild mit Bildunterschrift mit css oder als table
+	</ol>
+      <li><span class="datum">2013-01-17 v-aktuell</span>
+	<ol>
+	  <li> Verzeichnis "privat" für die nicht &ouml;ffentliche Daten.
+	  <li>  Shell-Skript zum Generieren aus php :
+                /home/hanno/joomla-artikel/upload-to-uhren-albrecht-ohne-adjust-extension.sh 
+	  <li> Redirection mit Metatag geht nach Beseitigung eines &uuml;berfl&uuml;ssigen `"'.
+	  <li> Fotos des Ullstein-Protokolls bei cwcity hinterlegt.
+	  <li> Skript /home/hanno/joomla-artikel/sende-joomla-artikel-an-strato.sh 
+	  <li> Ullstein-Protokoll aus joomla kopiert
+	</ol>
+      <li><span class="datum">2013-01-18 v-aktuell</span>
+	<ol>
+	  <li> meta-Keywords aufgefrischt
+	  <li> Redirect 301 /Turmuhren.htm /turmuhren.php in /daten/srv/www/uhren-albrecht.hopto.org/.htaccess
+               veranlasst upload-to-uhren-albrecht dazu,
+               in www.uhren-albrecht.de/Turmuhren.htm eine Kopie von turmuhren.de.html zu erzeugen
+	  <li> meta http-equiv="refresh" content="0; URL=/index.php" : php ist sch&auml;dlich
+	  <li> Zu den Bilder "alt" und "title" hinzugef&uuml;gt.
+	</ol>
+      <li><span class="datum">2013-01-19 v-aktuell</span>
+	<ol>
+	  <li> Übersetzung Zeitanzeige
+	  <li> Bilder bei cwcity gesichert
+	</ol>
+      <li><span class="datum">2013-01-20 v-aktuell</span>
+	<ol>
+	  <li> Übersetzung Zeiterfassung
+	  <li> Weitere veraltete Links umgeleitet
+	</ol>
+      <li><span class="datum">2013-01-21 v-aktuell</span>
+	<ol>
+	  <li> Sicherungskopie unter http://gerdkolano.cwsurf.de/v-aktuell/
+	  <li> upload sollte besser auf Fehler von ncftpput reagieren
+	</ol>
+      <li><span class="datum">2013-01-28 v-aktuell</span>
+	<ol>
+	  <li> Aus Joomla kopiert:<br>
+	    privat/ullstein-beschreibung.html<br>
+	    privat/ullstein-protokoll.html
+	  <li> 
+	</ol>
+      <li><span class="datum">2013-02-01 v-aktuell</span>
+	<ol>
+	  <li> Bewegte AA-Uhr auf den öffentlichen Seiten angehalten und auf die private Seite gerettet.
+	  <li> ... kann als bewegtes und bewegendes Design-Element eingesetzt werden.
+	  Animationen ziehen unwillkürlich die Aufmerksamkeit auf sich.
+	  Durch diesen Effekt kann der Blick des Nutzers auf eine Website geleitet werden 
+	</ol>
+      <li><span class="datum">2013-02-00 v-aktuell</span>
+	<ol>
+	  <li> 
+	</ol>
+      <li><span class="datum">2013-02-00 v-aktuell</span>
+	<ol>
+	  <li> 
+	</ol>
+      <li><span class="datum">in Zukunft zu erledigen</span>
+	<ol>
+	  <li> Verweise auf Ullstein einbauen
+	  <li> Weiter Ullstein-Dateien aus joomla kopieren
+	  <li>
+	  <li> einige sichtbare Dateinamen ins Polnische &uuml;bersetzen
+	  <li> Regenerieren der PHP-Dateien
+	  <li> uhrendienstealbrecht@web.de nicht dem Kopf hinzuf&uuml;gen
+	  <li> Gro&szlig;e Bilder extern speichern. Bei Yandex. Oder bei cwcity. Oder Google.
+	  <li>
+	</ol>
+    </ul>
+
+    <hr>
+    <address><a href="mailto:uhrendienstealbrecht@web.de">E-Mil an den Chef</a></address>
+<!-- Created: Fri Jan  4 11:27:25 CET 2013 -->
+<!-- hhmts start -->
+Last modified: Mon Jan 28 17:11:11 CET 2013
+<!-- hhmts end -->
+  </body>
+</html>

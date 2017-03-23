@@ -1,0 +1,269 @@
+#####################################################################
+2013-08-03
+
+Vielen Dank, ich bitte recht herzlich um die Lieferung.
+Sollte Herr Alexander Albrecht nicht zügig zahlen,
+begleiche ich die Rechnung. Hanno Schallehn.
+ 
+ 
+Dnia Piątek, 2 Sierpnia 2013 23:36 Richard Härtel <Info@Nebenuhrsteuerung.de> napisał(a)
+Auftrags-Nummer: 1307057
+ 
+Hallo Herr Schallehn, hallo Herr Albrecht,
+ 
+ich habe heute Ihre Sondersoftware programmiert:
+ 
+Überwachung der Verstellbewegung über Reed-Kontakt:
+- Impulsausgabe alle 30 Sek.
+- Impulsdauer 4 Sek, dann 3 Sek. Pause
+- kommt der Reed-Kontakt einmal oder nicht, werden ganz normal weiterhin
+Impulse ausgegeben.
+- kommt der Reed-Kontakt mehr als einmal, werden die nächsten n-1 Impulse
+ausgelassen
+-> der Reedkontakt wird softwaremäßig entprellt
+-> zur Kontrolle des Reedkontaktes leuchtet die rote LED (Kontakt
+geschlossen)
+ 
+ 
+Ich kann folgende Artikel anbieten:
+ 
+Artikel: Impulsgeber "Min41", DCF-Modul, Gangreserve
+Preis  : 69.00 EUR
+ 
+Artikel: SonderVersion: 2 Imp/Min - 4 Sek Imp. / 3 Sek Pause
+Preis  : 0.00 EUR
+ 
+Artikel: SonderSoftware, ReedKontakt-Überwachung
+Preis  : 40.00 EUR
+ 
+Artikel: Montagematerial, ohne Berechnung
+Preis  : 0.00 EUR
+ 
+ 
+Warenwert: 109.00 EUR
+plus Versand: 7.50 EUR
+Gesamtbetrag: 116.50 EUR
+ 
+ 
+Folgende Lieferadresse habe ich gespeichert:
+ 
+Hanno Schallehn
+Löwenbrucher Weg 24c
+12307 Berlin
+ 
+ 
+Folgende Rechnungsadresse habe ich gespeichert:
+ 
+Alexander Albrecht
+Schwalbacher Str. 61
+60326 Frankfurt / Main
+ 
+ 
+Wie bei Internetkäufen üblich haben Sie ein 4-wöchiges Rückgaberecht der
+Waren. Bitte beachten Sie, dass
+die Sondersoftware vom Rückgaberecht ausgeschlossen ist.
+ 
+Wenn nichts auszusetzen ist, bitte ich um kurze Rückmeldung. Die Schaltung
+könnte morgen auf Rechnung
+in den Versand.
+ 
+Viele Grüße
+ 
+Richard Härtel
+Hard- und Software
+Klingenwiese 7
+97490 Poppenhausen - Kützberg
+Tel. +49 (0)9726 - 9247
+http://www.nebenuhrsteuerung.de
+
+
+This is Hanno's site ##
+http://gerd.dyndns-free.com # or #
+http://kolano.dyndns-free.com # or #
+http://gerdkolano.tripod.com ##
+
+#####################################################################
+2013-08-02
+Hallo Herr Schallehn,
+
+unten genannte Artikel gehen morgen auf Rechnung in den Versand.
+
+DHL-Paket-Nr: 00340433836319708990 
+
+Einige Hinweise:
+- Das DCF-Modul kann in der Luftpolsterfolie bleiben und auch so betrieben 
+werden, 
+  die Folie schützt vor Feuchtigkeit.
+- Die Nebenuhrsteuerung ist für den Betrieb in trockenen Räumen bestimmt.
+- Bitte überprüfen Sie den Packungsinhalt auf Vollständigkeit (Jumper steckt?)
+- Schließen Sie Akkus bzw. das Netzteil erst dann an, wenn die Schaltung 
+isoliert befestigt wurde.
+- Falls an dem Kabel des Netzteils ein Hohl- oder KlinkenStecker angegossen 
+ist, 
+  kann dieser abgeschnitten und die Kabel dirket angeklemmt werden.
+- Den Pufferakku beim Impulsgeber Min4.1 bitte erst ganz am Ende (nach dem 
+Stellen der Uhr) anschließen.
+- Beim Anschluß des Netzteils auf Polarität achten
+- Siehe auch: http://www.nebenuhrsteuerung.de/Anschluss4.htm
+
+Sollte noch Fragen offen sein, bitte melden.
+
+Viele Grüße
+
+Richard Härtel
+Hard- und Software
+Klingenwiese 7
+97490 Poppenhausen - Kützberg
+Tel. +49 (0)9726 - 9247
+http://www.nebenuhrsteuerung.de
+
+----------------
+Artikelliste:
+Artikel:	Impulsgeber "Min41", DCF-Modul, Gangreserve
+Preis  :	69.00 EUR
+
+Artikel:	SonderVersion: 2 Imp/Min - 4 Sek Imp. / 3 Sek Pause
+Preis  :	0.00 EUR
+
+Artikel:	SonderSoftware, ReedKontakt-Überwachung
+Preis  :	40.00 EUR
+
+Artikel:	Montagematerial, ohne Berechnung
+Preis  :	0.00 EUR
+
+
+#####################################################################
+2013-07-29
+
+Sehr geehrter Herr Härtel,
+unsere Ullstein-Uhr geht zuverlässig täglich einige Minuten vor.
+Inzwischen habe ich in sie längst einen Reed-Kontakt eingebaut.
+Während das Uhrwerk um eine halbe Minute vorrückt, 
+wird dieser Kontakt kurz, für weniger als eine Sekunde, geschlossen.
+Das Werk schließt ihn ungefähr zwei Sekunden nach dem alle 30 Sekunden
+eintreffenden Polwendeimpuls.  
+
+Mehrmals täglich rückt das Uhrwerk nach einem Polwendeimpuls unerwünscht um mehrere halbe Minuten vor.
+Ich bitte Sie also, eine Steuerung zu liefern,
+die die Anzahl der ausgesandten Polwendeimpuse 
+mit der Anzahl der Schließungen des Reed-Kontakts vergleicht.
+Die Differenz dieser beiden Anzahlen gibt an, wie oft Polwendeimpulse auszulassen sind.
+
+Vielen Dank!
+Mit freundlichen Grüßen
+Hanno Schallehn
+Löwenbrucher Weg 24c
+D-12307 Berlin
++49 30 477 09 05
+
+#####################################################################
+> Hallo Herr Schallehn,
+> vielen Dank für Ihre Anfrage.
+> Ja Herr Albrecht hat mir schon telefonisch mitgeteilt, dass Sie sich mal
+> melden werden wegen der Erweiterung der Steuerung.
+> Ich denke schon, dass ich diesen Kontakt noch mitüberwachen kann.
+> Ich werde versuchen, Sie morgen Abend mal telefonisch zu erreichen. Tagsüber
+> bin ich leider auf Arbeit und nicht erreichbar.
+> Im Gespräch lassen sich manche Dinge einfacher klären.
+> Zur 2. Frage:
+> - das gewünschte Sondertiming war: 4 Sek High, mindestens 3 Sek Low
+>  
+> Bei weiteren Fragen stehe ich gerne zur Verfügung.
+>  
+> Viele Grüße
+>  
+> Richard Härtel
+> Hard- und Software
+> Klingenwiese 7
+> 97490 Poppenhausen - Kützberg
+> Tel. +49 (0)9726 - 9247
+> http://www.nebenuhrsteuerung.de
+>  
+#####################################################################
+>  
+> ----- Original Message -----
+> From: "Gerd Kolano" <gerdkolano@wp.pl>
+> To: <Info@Nebenuhrsteuerung.de>; "Hanno Schallehn" <gerdkolano@wp.pl>
+> Sent: Wednesday, March 27, 2013 12:00 PM
+> Subject: Min 4.1
+>  
+>  
+> > Info@Nebenuhrsteuerung.de
+> > Richard Härtel
+> >        Hard- und Software
+> >        Klingenwiese 7
+> >        97490 Poppenhausen
+> >
+> > Sehr geehrter Herr Härtel,
+> > Für meinen Freund Alexander Albrecht, Frankfurt am Main
+> > habe ich die Wartung der Turmuhr des Ullsteinhauses in Berlin
+> > übernonmmen.
+> > Seit Oktober 2012 überwache ich die Uhr,
+> > habe einige mechanische Mängel beseitigt und
+> > kann die Hemmung der Uhr fein justieren.
+> >
+> > Der von Ihnen gelieferte Minuten-Impulsgeber "Min 4.1" mit Gangreserve
+> > arbeitet zuverlässig ohne Störungen.
+> >
+> > Regelmäßig alle 30s gibt er einen polwendenden Impuls
+> > an das Schlagankerwerk.
+> > Dieses löst die Hemmung.
+> > Die Hemmung stoppt die Bewegung des Uhrwers wieder,
+> > nachdem die Zeiger um eine halbe Minute vorgerückt sind.
+> >
+> > Leider gelingt es mir nicht,
+> > die Hemmung so zu justieren,
+> > dass sie einerseits leichtgängig genug ist,
+> > um vom Schlagankerwerk gelöst werden zu können,
+> > andererseits aber auch zuverlässig das Werk wieder stoppt.
+> >
+> > Seit Monaten schon regele ich die Justierung in die eine Richtung:
+> > die Uhr bleibt dann stehen,
+> > oder in die andere Richtung:
+> > Die Uhr eilt dann täglich einige Minuten voraus.
+> > Ich lasse die Uhr nun täglich einige Minuten vorauseilen.
+> >
+> > Man könnte eine Schalter einbauen,
+> > der jedes Mal,
+> > wenn die Mechanik eine halbe Minute vorrückt,
+> > kurz schließt.
+> > Das nenne ich "Vorrückimpuls".
+> >
+> > Nun endlich meine Frage an Sie:
+> >
+> > Können Sie eine Steuerung liefern,
+> > die Zustellimpulse auslässt,
+> > wenn zu viele Vorrückimpulse empfangen wurden?
+> >
+> > Ihre Steuerung müsste die Vorrückimpulse empfangen,
+> > ihre Anzahl speichern und
+> > statt des einfachen Kommandos
+> >
+> > +----------------------schnipp----------------+
+> > Sende_Zustellimpuls
+> > +----------------------schnapp----------------+
+> >
+> > das bedingte Kommando
+> >
+> > +----------------------schnipp----------------+
+> > IF Anzahl_der_Vorrückimpulse > 1 THEN
+> >  Anzahl_der_Vorrückimpulse --
+> > ELSE
+> >  Anzahl_der_Vorrückimpulse = 0
+> >  Sende_Zustellimpuls
+> > ENDIF
+> > +----------------------schnapp----------------+
+> >
+> > ausführen.
+> >
+> > Zum Schluss noch eine Frage,
+> > die nichts mit meinem Problem zu tun hat:
+> > Mit welcher Frequenz werden Zustellimpulse
+> > nach einem Stromausfall nachgeholt?
+> >
+> > Mit freundlichen Grüßen
+> > Hanno Schallehn
+> > Löwenbrucher Weg 24c
+> > D-12307 Berlin
+> > +49 30 477 09 05
+> > gerdkolano@wp.pl

@@ -1,0 +1,158 @@
+/*
+ * @author ( Hanno )
+*/
+
+/*
+table,th,td {
+  border:1px solid black; 
+}
+*/
+
+body {
+  background-color: #33bbff;
+  font-weight:normal; 
+  font-family:Arial, Helvetica, sans-serif; 
+  font-size:100%; 
+  padding: 0px 0px 60px 0px; /* oben rechts unten links*/
+}
+
+a:link { font-weight:bold; color:blue; text-decoration:none; }
+a:visited { font-weight:bold; color:lime; text-decoration:none; }
+a:focus { font-weight:bold; color:red; text-decoration:underline; }
+a:hover { font-weight:bold; color:green; text-decoration:none; }
+a:active { font-weight:bold; color:silver; text-decoration:underline; }
+
+.nachlinks {
+  float:left;
+  margin-right:10px;
+}
+
+.bild-rechts {
+  float:right;
+  /* border:solid 1px red; */
+  margin-left: 10px;
+  margin-bottom: 10px;
+  text-align:center
+}
+
+.bild-links  {
+  float:left;
+  /* border:solid 1px red; */
+  margin-right:10px;
+  margin-bottom: 10px;
+  text-align:center
+}
+
+.caption {font-size:83%;}
+
+#footer { 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0 0;
+  background: #33bbff; 
+}
+
+#nav {
+  font-size: 80%;
+  height: 50px;
+  background: blue;
+}
+
+#nav a {
+  display: block;
+  float: left;
+  overflow:hidden;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 2px;
+  width: 9.4%;
+  line-height: 25px;
+  border-right: 2px solid #33bbff; /* #91ab3b; */
+}
+
+#nav a:hover {
+  background: #91ab3b;
+}
+
+#navl {
+  font-size: 80%;
+  height: 50px;
+  background: blue;
+}
+
+#navl a {
+  display: block;
+  float: left;
+  overflow:hidden;
+  color: #0f0;
+  text-decoration: none;
+  padding: 0 2px;
+  width: 9.4%;
+  line-height: 25px;
+  border-right: 2px solid #33bbff; /* #91ab3b; */
+}
+
+#navl a:hover {
+  background: #91ab3b;
+}
+
+#content { 
+	position: relative; 
+	padding: 20px 10px 260px 10px; /* oben rechts unten links*/
+	background: #3bf;
+}
+
+.bilderrahmenlinks{
+        border: 1px solid #c4c4c4;
+        padding: 12px;
+        margin-right: 12px;
+        float:left;
+}
+
+.bilderrahmenrechts{
+        border: 1px solid #c4c4c4;
+        padding: 12px;
+        margin-left: 12px;
+        float:right;
+}
+
+figcaption{
+    /* border:1px solid #c4c4c4; */
+    border:1px solid #c4c4c4;
+    padding: 0px 8px 10px 8px;
+    background: #3bf; /* Old browsers */
+}
+
+figure, figcaption{
+	margin:0px;
+  display:block;
+}
+fffigure {
+	float: left;
+	display: table;
+	width: 87px;
+}
+
+.albrecht {color:red}
+
+p.anleitung   {font-size: 64%; text-align: center}
+p.stopfloat   {clear:both}
+span.adresse  {font-family: Arial, Helvetica, sans-serif; font-size: 120%}
+span.seitwann {font-family: Arial, Helvetica, sans-serif}
+.mittig       {text-align: center}
+div.unserangebot {font-family: Arial, Helvetica, sans-serif; text-align: center}
+hr.stark      {color:red}
+.bildunterschrift {font-size: 80%}
+div.links     {text-align: left}
+div.rechts    {float: right}
+
+div.kopfzeile {font-family: Arial, Helvetica, sans-serif; font-size: 150%; text-align: center}
+
+.blocksatz    {text-align: justify;
+hyphens:auto;
+-webkit-hyphens:auto;
+-moz-hyphens:auto;
+-ms-hyphens:auto;}
+
+span.urheber  {font-size: 50%}

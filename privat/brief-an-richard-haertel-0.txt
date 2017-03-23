@@ -1,0 +1,110 @@
+> Hallo Herr Schallehn,
+> vielen Dank für Ihre Anfrage.
+> Ja Herr Albrecht hat mir schon telefonisch mitgeteilt, dass Sie sich mal
+> melden werden wegen der Erweiterung der Steuerung.
+> Ich denke schon, dass ich diesen Kontakt noch mitüberwachen kann.
+> Ich werde versuchen, Sie morgen Abend mal telefonisch zu erreichen. Tagsüber
+> bin ich leider auf Arbeit und nicht erreichbar.
+> Im Gespräch lassen sich manche Dinge einfacher klären.
+> Zur 2. Frage:
+> - das gewünschte Sondertiming war: 4 Sek High, mindestens 3 Sek Low
+>  
+> Bei weiteren Fragen stehe ich gerne zur Verfügung.
+>  
+> Viele Grüße
+>  
+> Richard Härtel
+> Hard- und Software
+> Klingenwiese 7
+> 97490 Poppenhausen - Kützberg
+> Tel. +49 (0)9726 - 9247
+> http://www.nebenuhrsteuerung.de
+>  
+>  
+> ----- Original Message -----
+> From: "Gerd Kolano" <gerdkolano@wp.pl>
+> To: <Info@Nebenuhrsteuerung.de>; "Hanno Schallehn" <gerdkolano@wp.pl>
+> Sent: Wednesday, March 27, 2013 12:00 PM
+> Subject: Min 4.1
+>  
+>  
+> > Info@Nebenuhrsteuerung.de
+> > Richard Härtel
+> >        Hard- und Software
+> >        Klingenwiese 7
+> >        97490 Poppenhausen
+> >
+> > Sehr geehrter Herr Härtel,
+> > Für meinen Freund Alexander Albrecht, Frankfurt am Main
+> > habe ich die Wartung der Turmuhr des Ullsteinhauses in Berlin
+> > übernonmmen.
+> > Seit Oktober 2012 überwache ich die Uhr,
+> > habe einige mechanische Mängel beseitigt und
+> > kann die Hemmung der Uhr fein justieren.
+> >
+> > Der von Ihnen gelieferte Minuten-Impulsgeber "Min 4.1" mit Gangreserve
+> > arbeitet zuverlässig ohne Störungen.
+> >
+> > Regelmäßig alle 30s gibt er einen polwendenden Impuls
+> > an das Schlagankerwerk.
+> > Dieses löst die Hemmung.
+> > Die Hemmung stoppt die Bewegung des Uhrwers wieder,
+> > nachdem die Zeiger um eine halbe Minute vorgerückt sind.
+> >
+> > Leider gelingt es mir nicht,
+> > die Hemmung so zu justieren,
+> > dass sie einerseits leichtgängig genug ist,
+> > um vom Schlagankerwerk gelöst werden zu können,
+> > andererseits aber auch zuverlässig das Werk wieder stoppt.
+> >
+> > Seit Monaten schon regele ich die Justierung in die eine Richtung:
+> > die Uhr bleibt dann stehen,
+> > oder in die andere Richtung:
+> > Die Uhr eilt dann täglich einige Minuten voraus.
+> > Ich lasse die Uhr nun täglich einige Minuten vorauseilen.
+> >
+> > Man könnte eine Schalter einbauen,
+> > der jedes Mal,
+> > wenn die Mechanik eine halbe Minute vorrückt,
+> > kurz schließt.
+> > Das nenne ich "Vorrückimpuls".
+> >
+> > Nun endlich meine Frage an Sie:
+> >
+> > Können Sie eine Steuerung liefern,
+> > die Zustellimpulse auslässt,
+> > wenn zu viele Vorrückimpulse empfangen wurden?
+> >
+> > Ihre Steuerung müsste die Vorrückimpulse empfangen,
+> > ihre Anzahl speichern und
+> > statt des einfachen Kommandos
+> >
+> > +----------------------schnipp----------------+
+> > Sende_Zustellimpuls
+> > +----------------------schnapp----------------+
+> >
+> > das bedingte Kommando
+> >
+> > +----------------------schnipp----------------+
+> > IF Anzahl_der_Vorrückimpulse > 1 THEN
+> >  Anzahl_der_Vorrückimpulse --
+> > ELSE
+> >  Anzahl_der_Vorrückimpulse = 0
+> >  Sende_Zustellimpuls
+> > ENDIF
+> > +----------------------schnapp----------------+
+> >
+> > ausführen.
+> >
+> > Zum Schluss noch eine Frage,
+> > die nichts mit meinem Problem zu tun hat:
+> > Mit welcher Frequenz werden Zustellimpulse
+> > nach einem Stromausfall nachgeholt?
+> >
+> > Mit freundlichen Grüßen
+> > Hanno Schallehn
+> > Löwenbrucher Weg 24c
+> > D-12307 Berlin
+> > +49 30 477 09 05
+> > gerdkolano@wp.pl
+> >
